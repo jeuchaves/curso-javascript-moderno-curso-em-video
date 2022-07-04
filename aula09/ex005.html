@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+       
+    </style>
+</head>
+<body>
+    <h1>Apredendo a utilizar DOM</h1>
+    <button id="btn-1">Clique aqui</button>
+    <script>
+        
+        // Adição do event click no botão
+        var btn_1 = document.querySelector( "#btn-1");
+        btn_1.addEventListener("click", () => {
+            // Para usar a função await é necessário que a função seja async
+            alterarBotao();
+        });
+
+        // Altera o texto do botão e o desabilita por 2 segundos
+        async function alterarBotao() {
+            var textoAntigo = btn_1.innerHTML;
+            btn_1.innerHTML = "clicou";
+            btn_1.disabled = true;
+            await sleep(2000);
+            btn_1.innerHTML = textoAntigo;
+            btn_1.disabled = false;
+        }
+        
+        // Função para fazer o programa parar por um determinado tempo (ms)
+        function sleep(ms) {
+            return new Promise(resolve => setTimeout(resolve, ms));
+        }
+    </script>
+</body>
+</html>
